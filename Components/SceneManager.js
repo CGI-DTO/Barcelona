@@ -41,11 +41,12 @@ class SceneManager{
 
     // CAMERA CONTROLS
     const controls = new OrbitControls(camera, canvas);
+    controls.enablePan = false;
     this.controls = controls;
     // TODO: limit orbit controls
     // Surface
-    camera.position.set(15, 10, 15);
-    controls.target.set(0, 1, 0);
+    camera.position.set(0, 10, 0);
+    //controls.target.set(30, 1, 0);
   // OBSEA base
   // camera.position.set(3, -16, 3);
   // controls.target.set(6,-19, -1);
@@ -78,7 +79,7 @@ class SceneManager{
     this.scene.camera = this.camera;
 
     // Fog
-    scene.fog = new THREE.FogExp2(new THREE.Color(0x47A0B9), 0.02);
+    scene.fog = new THREE.FogExp2(new THREE.Color(0x47A0B9), 0.00); //0.02
     // Fog only below water
     THREE.ShaderChunk.fog_fragment = FogShader.fogFrag;
     THREE.ShaderChunk.fog_pars_fragment = FogShader.fogFragParams;
@@ -99,16 +100,16 @@ class SceneManager{
     #endif`
 
     // Skybox
-    this.skybox = new SkyboxEntity(scene);
-    // Sand
-    this.sand = new SandEntity(scene);
-    // Ocean
+    // this.skybox = new SkyboxEntity(scene);
+    // // Sand
+    // this.sand = new SandEntity(scene);
+    // // Ocean
     this.ocean = new OceanEntity(scene);
 
-    // Flag
-    this.flag = new FlagEntity(scene, () => {
-      this.flag.root.position.y = 1.3;
-    });
+    // // Flag
+    // this.flag = new FlagEntity(scene, () => {
+    //   this.flag.root.position.y = 1.3;
+    // });
     
 
 
@@ -125,6 +126,34 @@ class SceneManager{
       this.Stext.textObj.position.y = 1;
       this.Stext.textObj.position.z = 8;
     });
+
+
+
+
+
+    // 360º VIDEO
+    const geometry = new THREE.SphereGeometry( 500, 60, 40 );
+    // invert the geometry on the x-axis so that all of the faces point inward
+    geometry.scale( - 0.2, 0.2, 0.2 );
+
+    let videoEl = document.createElement("video");
+    videoEl.loop = true; videoEl.crossOrigin = 'anonymous'; videoEl.playsInline = true; videoEl.muted = "muted";
+    videoEl.src = '/Barcelona/Videos/23.05.31_T13.00_Hm0_0.32_Mdir_84_Hmax_0.53_Tz_2.5_Tp_2.7 _Wspd_5.4kt_Wdir_84.mp4';
+    videoEl.play();
+
+    const texture = new THREE.VideoTexture(videoEl);
+    texture.colorSpace = THREE.SRGBColorSpace;
+    const material = new THREE.MeshBasicMaterial( { map: texture } );
+
+    const mesh = new THREE.Mesh( geometry, material );
+    mesh.renderOrder= 10;
+    mesh.rotateY(180);
+    scene.add( mesh );
+
+
+
+
+
 
 
 

@@ -46,7 +46,9 @@ class SceneManager{
     // TODO: limit orbit controls
     // Surface
     camera.position.set(0, 10, 0);
-    //controls.target.set(30, 1, 0);
+    controls.maxDistance = 0.01;
+    //controls.maxPolarAngle = 0;
+    controls.target.set(0, 9.95, 0);
   // OBSEA base
   // camera.position.set(3, -16, 3);
   // controls.target.set(6,-19, -1);
@@ -134,7 +136,7 @@ class SceneManager{
     // 360º VIDEO
     const geometry = new THREE.SphereGeometry( 500, 60, 40 );
     // invert the geometry on the x-axis so that all of the faces point inward
-    geometry.scale( - 0.2, 0.2, 0.2 );
+    geometry.scale( - 0.3, 0.3, 0.3 );
 
     let videoEl = document.createElement("video");
     videoEl.loop = true; videoEl.crossOrigin = 'anonymous'; videoEl.playsInline = true; videoEl.muted = "muted";

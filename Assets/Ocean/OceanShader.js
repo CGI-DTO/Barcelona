@@ -261,7 +261,7 @@ export const OceanFragShader = /* glsl */`
 
     // Ocean color
     vec3 oceanColor = vec3(0.016, 0.064, 0.192);//(0.2, 0.2, 1.0);  
-    oceanColor = vec3(0.02, 0.05, 0.07); // Gray
+    oceanColor = vec3(0.03, 0.05, 0.05); // Gray
 
     // Diffuse color
     vec3 diffuseColor = oceanColor * max(0.0, dot(normalize(sunPosition), geoNormal)); // NORMAL WITHOUT TEXTURE

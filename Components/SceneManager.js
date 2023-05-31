@@ -149,7 +149,7 @@ class SceneManager{
 
     const mesh = new THREE.Mesh( geometry, material );
     mesh.renderOrder= 10;
-    mesh.rotateY(210 * Math.PI / 180);
+    mesh.rotateY(220 * Math.PI / 180);
     scene.add( mesh );
 
 

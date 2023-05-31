@@ -44,7 +44,13 @@ class OceanEntity {
     // Creates a texture that has parameters for generating waves. It includes wave steepness, height, direction X, and direction Z (RGBA).
     let imgSize = 4;
     this.imgSize = imgSize;
-    this.oceanParams = new OceanParameters({}, imgSize);
+    this.oceanParams = new OceanParameters({
+      Hm0: 0.32,
+      H10: 0.53,
+      hMax: 0.53,
+      Mdir: 84,
+      Spr1: 36.7,
+    }, imgSize);
     let paramsData = this.oceanParams.getWaveParamsImageData();//createWaveParamsImageData({}, imgSize);
     let paramsTexture = new THREE.DataTexture(paramsData, imgSize, imgSize, THREE.RGBAFormat, THREE.UnsignedByteType);
     paramsTexture.magFilter = THREE.NearestFilter;
@@ -95,7 +101,7 @@ class OceanEntity {
           u_steepnessFactor: { value: 0.2 },
           // u_wavelength: { value: 7.0 },
           // u_direction: { value: new THREE.Vector2(1, 0) },
-          u_wave1Params: { value: new THREE.Vector4(0.1, 0.1, 0.0, 1.0) }, // steepness, waveHeight, directionx, directionz
+          u_wave1Params: { value: new THREE.Vector4(0.1, 0.32, -1.0, 0.2) }, // steepness, waveHeight, directionx, directionz
           u_wave2Params: { value: new THREE.Vector4(0.05, 0.2, 0.5, 1.0) }, // steepness, waveHeight, directionx, directionz
           u_wave3Params: { value: new THREE.Vector4(0.1, 0.05, 1.0, 1.0) }, // steepness, waveHeight, directionx, directionz
           u_normalTexture: {value: normalTexture}, // TODO: WHAT IF THE TEXTURE TAKES TOO LONG TO LOAD?

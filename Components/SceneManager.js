@@ -121,12 +121,12 @@ class SceneManager{
     this.Ntext = new TextMeshEntity(scene, "N", 0.8, 0xff0000, () => {
       this.Ntext.textObj.rotation.x = -Math.PI / 2;
       this.Ntext.textObj.position.y = 1;
-      this.Ntext.textObj.position.z = -8;
+      this.Ntext.textObj.position.z = -15;
     });
     this.Stext = new TextMeshEntity(scene, "S", 0.8, 0xffffff, () => {
       this.Stext.textObj.rotation.x = -Math.PI / 2;
       this.Stext.textObj.position.y = 1;
-      this.Stext.textObj.position.z = 8;
+      this.Stext.textObj.position.z = 15;
     });
 
 
@@ -149,7 +149,7 @@ class SceneManager{
 
     const mesh = new THREE.Mesh( geometry, material );
     mesh.renderOrder= 10;
-    mesh.rotateY(180);
+    mesh.rotateY(210 * Math.PI / 180);
     scene.add( mesh );
 
 

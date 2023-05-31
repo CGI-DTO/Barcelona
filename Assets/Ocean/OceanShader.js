@@ -37,7 +37,7 @@
 // https://www.khronos.org/opengl/wiki/GLSL_Optimizations
 
 // Use VS plugin "Comment tagged templates" and add /* glsl */
-export const OceanVertShader = /* glsl */ `
+export const OceanVertShader = /* glsl */`
         
   #define PI 3.141592653589793
   precision lowp float;
@@ -222,6 +222,10 @@ export const OceanFragShader = /* glsl */`
 
   void main(){
 
+    if (v_WorldPosition.x > 0.0){
+      discard;
+    }
+
     // Bump texture for specular reflections
     vec2 scale = vec2(2.0,2.0);
     float speedFactor = 0.0;
@@ -257,7 +261,8 @@ export const OceanFragShader = /* glsl */`
 
     // Ocean color
     vec3 oceanColor = vec3(0.016, 0.064, 0.192);//(0.2, 0.2, 1.0);  
-    
+    oceanColor = vec3(0.02, 0.05, 0.07); // Gray
+
     // Diffuse color
     vec3 diffuseColor = oceanColor * max(0.0, dot(normalize(sunPosition), geoNormal)); // NORMAL WITHOUT TEXTURE
 
@@ -266,15 +271,19 @@ export const OceanFragShader = /* glsl */`
 
     // Sky color
     vec3 skyColor = vec3(0.51, 0.75, 1.0);
-
+    skyColor = vec3(0.7, 0.7, 0.8);
 
     // Underwater factor (if camera is above or below water)
     float underwaterFactor = (abs(cameraPosition.y)/cameraPosition.y)*0.5 + 0.5;
     // Fog underwater (Fog exp 2)
     float fogDepth = distance(v_WorldPosition, cameraPosition);
-    float fogDensity = u_fogDensity - u_fogDensity * 0.5 * underwaterFactor;
+
+ 
+    //float fogDensity = u_fogDensity - u_fogDensity * 0.5 * underwaterFactor;
+    float fogDensity = 0.02 - 0.02 * 0.5 * underwaterFactor;
     float fogFactor = 1.0 - exp( - fogDensity * fogDensity * fogDepth * fogDepth );
     vec3 fogAirColor = vec3(0.8, 0.93, 1.0);
+    fogAirColor = vec3(165.0/255.0, 174.0/255.0, 180.0/255.0);
     vec3 fogColor = mix(u_fogUnderwaterColor, fogAirColor, underwaterFactor) ;
 
     
@@ -310,7 +319,7 @@ export const OceanFragShader = /* glsl */`
     // Add fog
     color = mix( color, fogColor, fogFactor );
 
-    gl_FragColor = vec4(color, 0.9 + fogFactor*0.1);
+    gl_FragColor = vec4(color, 1.0);
     //gl_FragColor = vec4(skyFresnel + waterFresnel + diffuseColor + specularColor, 0.92);
     
 

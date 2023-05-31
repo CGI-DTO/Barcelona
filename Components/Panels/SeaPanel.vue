@@ -136,7 +136,7 @@
 
 
 <script>
-import Knob from '/OBSEA/Components/Knob.vue';
+import Knob from '/Barcelona/Components/Knob.vue';
 
 // TODO: Wave height tip: http://jsfiddle.net/Zu59F/
 
@@ -201,14 +201,6 @@ export default {
       window.eventBus.emit('SeaPanel_swell1SteepnessSliderClicked', parseFloat(e.target.value))
     }
 
-
-    // compassButtonClicked: function (e) {
-    //   window.eventBus.emit('TopRightNav_compassButtonClicked');
-    // },
-    // infoButtonClicked: function (e) {
-    //   window.eventBus.emit('TopRightNav_infoButtonClicked');
-    //   window.open('https://github.com/BlueNetCat/OBSEA', '_blank');
-    // }
   },
   components: {
     knob: Knob

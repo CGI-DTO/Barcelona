@@ -22,7 +22,7 @@
 
 
     <!-- OBSEA Title -->
-    <img class="OBSEABanner" src="/OBSEA/Assets/OBSEABanner.png">
+    <!-- <img class="OBSEABanner" src="/OBSEA/Assets/OBSEABanner.png"> -->
   </div>
 </template>
 
@@ -39,11 +39,11 @@
 */
 
 // Import components
-import Canvas3D from "/OBSEA/Components/Canvas3D.vue"
-import InstrumentsMenu from "/OBSEA/Components/Instruments/InstrumentsMenu.vue"
-import TopRightNav from "/OBSEA/Components/TopRight/TopRightNav.vue"
-import BottomSection from "/OBSEA/Components/Bottom/BottomSection.vue"
-import CentralPanel from "/OBSEA/Components/CentralPanel.vue"
+import Canvas3D from "/Barcelona/Components/Canvas3D.vue"
+import InstrumentsMenu from "/Barcelona/Components/Instruments/InstrumentsMenu.vue"
+import TopRightNav from "/Barcelona/Components/TopRight/TopRightNav.vue"
+import CentralPanel from "/Barcelona/Components/CentralPanel.vue"
+import BottomSection from "/Barcelona/Components/Bottom/BottomSection.vue"
 
 export default {
   name: "AppManager",

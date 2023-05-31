@@ -4,23 +4,15 @@ import { OrbitControls } from 'https://threejs.org/examples/jsm/controls/OrbitCo
 import { OBJLoader } from 'https://threejs.org/examples/jsm/loaders/OBJLoader.js';
 import { GLTFLoader } from 'https://threejs.org/examples/jsm/loaders/GLTFLoader.js';
 import { FBXLoader } from 'https://threejs.org/examples/jsm/loaders/FBXLoader.js'
-import { RosaVentsEntity } from '/OBSEA/Assets/Orientation/RosaVentsEntity.js';
-import { SandEntity } from '/OBSEA/Assets/Terrain/SandEntity.js';
-import { SkyboxEntity } from '/OBSEA/Assets/Skybox/SkyboxEntity.js';
 
-import * as FogShader from '/OBSEA/Assets/Terrain/FogShader.js'
-import { OceanEntity } from '/OBSEA/Assets/Ocean/OceanEntity.js';
-import { OBSEABuoyEntity } from '/OBSEA/Assets/OBSEABuoy/OBSEABuoyEntity.js';
-import { OBSEAStationEntity } from '/OBSEA/Assets/OBSEAStation/ObseaStationEntity.js';
-import { OBSEABiotopEntity } from '/OBSEA/Assets/OBSEABiotop/OBSEABiotopEntity.js'
-import { OBSEACrawlerEntity } from '/OBSEA/Assets/OBSEACrawler/CrawlerEntity.js';
-//import { WindsockEntity } from '/OBSEA/Assets/Windsock/WindsockEntity.js';
-import { FlagEntity } from '/OBSEA/Assets/Flag/FlagEntity.js';
-import { CurrentEntity } from '/OBSEA/Assets/Current/CurrentEntity.js';
-import { TextMeshEntity } from '/OBSEA/Assets/TextMesh/TextMeshEntity.js';
+import { SandEntity } from '/Barcelona/Assets/Terrain/SandEntity.js';
+import { SkyboxEntity } from '/Barcelona/Assets/Skybox/SkyboxEntity.js';
 
-import { OBSEADataRetriever } from '/OBSEA/data/OBSEADataRetriever.js'
+import * as FogShader from '/Barcelona/Assets/Terrain/FogShader.js'
+import { OceanEntity } from '/Barcelona/Assets/Ocean/OceanEntity.js';
 
+import { FlagEntity } from '/Barcelona/Assets/Flag/FlagEntity.js';
+import { TextMeshEntity } from '/Barcelona/Assets/TextMesh/TextMeshEntity.js';
 
 
 class SceneManager{
@@ -112,14 +104,6 @@ class SceneManager{
     this.sand = new SandEntity(scene);
     // Ocean
     this.ocean = new OceanEntity(scene);
-    // OBSEA Buoy
-    this.obseaBuoy = new OBSEABuoyEntity(scene);
-    // OBSEA Base
-    this.obseaBase = new OBSEAStationEntity(scene);
-    // OBSEA Biotop
-    this.obseaBiotop = new OBSEABiotopEntity(scene);
-    // OBSEA Crawler
-    this.obseaCrawler = new OBSEACrawlerEntity(scene);
 
     // Flag
     this.flag = new FlagEntity(scene, () => {
@@ -127,21 +111,9 @@ class SceneManager{
     });
     
 
-    // Rosa dels vents
-    this.rosaVents = new RosaVentsEntity(scene);
-    this.rosaVents.root.position.y = 7;
-    
-    // Sea velocity, currents
-    this.currents = new CurrentEntity(scene);
-
-
 
     // SCENE TEXT
     // SURFACE
-    // Wind text mesh
-    this.windText = new TextMeshEntity(scene, "", 0.25, 0x000000, () => {
-      this.windText.textObj.position.y = 9;
-    });
     // Orientation text meshes
     this.Ntext = new TextMeshEntity(scene, "N", 0.8, 0xff0000, () => {
       this.Ntext.textObj.rotation.x = -Math.PI / 2;
@@ -153,27 +125,7 @@ class SceneManager{
       this.Stext.textObj.position.y = 1;
       this.Stext.textObj.position.z = 8;
     });
-    // BOTTOM
-    // Temperature text
-    this.tempText = new TextMeshEntity(scene, "16º C", 0.25, 0x000000, () => {
-      this.tempText.textObj.rotation.x = -Math.PI / 2;
-      this.tempText.textObj.position.set(3, -19.35, 0);
-    });
-    this.salText = new TextMeshEntity(scene, "37.8 psu", 0.25, 0x000000, () => {
-      this.salText.textObj.rotation.x = -Math.PI / 2;
-      this.salText.textObj.position.set(3, -19.35, 0.5);
-    });
-    // Potential salinity
 
-    // OBSEA Data
-    // let dataRetriever = new OBSEADataRetriever(() => {
-    //   // Modify ocean parameters
-    //   if (ocean) ocean.updateOceanParameters(dataRetriever.currentParams);
-    //   // Modify wind
-    //   if (flag) flag.updateWindParameters(dataRetriever.currentParams);
-    //   // Update currents
-    //   if (currents) currents.updateCurrentParameters(dataRetriever.currentParams);
-    // });
 
 
 
@@ -218,7 +170,7 @@ class SceneManager{
 
     // Create image logo
     let expObseaImg = document.createElement("img");
-    expObseaImg.src = "/OBSEA/Assets/OBSEABanner.png";
+    expObseaImg.src = "/Barcelona/Assets/OBSEABanner.png"; // TODO
     expObseaImg.style['max-width'] = '40vw';
     expObseaImg.style['max-height'] = '130px';//'18%';
 
@@ -241,17 +193,17 @@ class SceneManager{
       border-radius: 10px`;
 
     // Create sponsors logos
-    let sponsorsImg = document.createElement("img");
-    sponsorsImg.src = "/OBSEA/img/Logos.png";
-    sponsorsImg.style['max-width'] = '100%';
-    sponsorsImg.style['max-height'] = '20%';
-    sponsorsImg.style.bottom = '10px';
-    sponsorsImg.style.position = 'absolute';
+    // let sponsorsImg = document.createElement("img");
+    // sponsorsImg.src = "/Barcelona/img/Logos.png"; // TODO
+    // sponsorsImg.style['max-width'] = '100%';
+    // sponsorsImg.style['max-height'] = '20%';
+    // sponsorsImg.style.bottom = '10px';
+    // sponsorsImg.style.position = 'absolute';
 
     // Add to div
     loadDiv.appendChild(expObseaImg);
     loadDiv.appendChild(progress);
-    loadDiv.appendChild(sponsorsImg);
+    // loadDiv.appendChild(sponsorsImg);
     // Add to body
     document.body.appendChild(loadDiv);
 
@@ -302,18 +254,7 @@ class SceneManager{
       .onUpdate(() => this.controls.update())
       .start();
   }
-  focusOnBase = function(){
-    // Tween camera position
-    new TWEEN.Tween(this.camera.position)
-      .to({ x: 6, y: -16, z: 6 }, 4000)
-      .start();
-    // Tween camera target
-    new TWEEN.Tween(this.controls.target)
-      .to({ x: 0, y: -19, z: 0 }, 4000)
-      .easing(TWEEN.Easing.Cubic.InOut)
-      .onUpdate(() => this.controls.update())
-      .start();
-  }
+
   faceNorthward = function(){
     // Tween camera position to face northward
     let dist = this.camera.position.distanceTo(this.controls.target);

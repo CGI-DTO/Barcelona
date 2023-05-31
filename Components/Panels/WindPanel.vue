@@ -57,7 +57,7 @@
 
 
 <script>
-import Knob from "/OBSEA/Components/Knob.vue";
+import Knob from "/Barcelona/Components/Knob.vue";
 
 
 

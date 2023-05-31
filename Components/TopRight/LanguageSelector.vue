@@ -13,9 +13,9 @@
           <ellipse class="cls-2" cx="255" cy="256" rx="72" ry="218" />
         </svg> -->
 
-        <img class="lang-icon" src="/OBSEA/lang/en-200.png" v-show="$i18n.locale.includes('en')">
-        <img class="lang-icon" src="/OBSEA/lang/es-200.png" v-show="$i18n.locale.includes('es')">
-        <img class="lang-icon" src="/OBSEA/lang/ca-200.png" v-show="$i18n.locale.includes('ca')">
+        <img class="lang-icon" src="/Barcelona/lang/en-200.png" v-show="$i18n.locale.includes('en')">
+        <img class="lang-icon" src="/Barcelona/lang/es-200.png" v-show="$i18n.locale.includes('es')">
+        <img class="lang-icon" src="/Barcelona/lang/ca-200.png" v-show="$i18n.locale.includes('ca')">
       
       </button>
     </div>
@@ -182,16 +182,16 @@ export default {
 
 .es:before {
   content: '';
-  background-image: url(/OBSEA/lang/es-200.png);
+  background-image: url(/Barcelona/lang/es-200.png);
 }
 
 .en:before {
   content: '';
-  background-image: url(/OBSEA/lang/en-200.png);
+  background-image: url(/Barcelona/lang/en-200.png);
 }
 .cat:before {
   content: '';
-  background-image: url(/OBSEA/lang/ca-200.png);
+  background-image: url(/Barcelona/lang/ca-200.png);
 }
 
 .lang-icon {

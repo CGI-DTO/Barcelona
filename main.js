@@ -1,15 +1,15 @@
 // https://github.com/FranckFreiburger/vue3-sfc-loader
 // https://github.com/FranckFreiburger/vue3-sfc-loader/blob/main/docs/examples.md#use-sfc-custom-blocks-for-i18n
-import ca from '/OBSEA/lang/ca.js';
-import en from '/OBSEA/lang/en.js';
-import es from '/OBSEA/lang/es.js';
+import ca from '/Barcelona/lang/ca.js';
+import en from '/Barcelona/lang/en.js';
+import es from '/Barcelona/lang/es.js';
 // Load classes
 // SceneManager
-import SceneManager from "/OBSEA/Components/SceneManager.js"
+import SceneManager from "/Barcelona/Components/SceneManager.js"
 window.SceneManager = SceneManager;
 // DataManager
-import DataManager from "/OBSEA/data/DataManager.js"
-window.DataManager = DataManager;
+// import DataManager from "/Barcelona/data/DataManager.js"
+// window.DataManager = DataManager;
 
 // Declare translations
 const i18n = VueI18n.createI18n({
@@ -54,7 +54,7 @@ const { loadModule } = window['vue3-sfc-loader'];
 
 const app = Vue.createApp({
   components: {
-    'app-manager': Vue.defineAsyncComponent(() => loadModule('/OBSEA/Components/AppManager.vue', options)),
+    'app-manager': Vue.defineAsyncComponent(() => loadModule('/Barcelona/Components/AppManager.vue', options)),
   },
   template: '<app-manager></app-manager>'
 });

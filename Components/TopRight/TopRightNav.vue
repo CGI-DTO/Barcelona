@@ -5,7 +5,8 @@
 
       <!-- Information button -->
       <button class="roundButton">
-        <div class="icon-svg infoDiv" @click="infoButtonClicked">info</div>
+        <a class="icon-svg infoDiv" href="https://www.github.com/cgi-dto/" target="_blank">info</a>
+        <!-- <div class="icon-svg infoDiv" @click="infoButtonClicked">info</div> -->
       </button>
 
       <!-- Language selector -->
@@ -35,7 +36,7 @@
 
 
 <script>
-import LanguageSelector from '/OBSEA/Components/TopRight/LanguageSelector.vue'
+import LanguageSelector from '/Barcelona/Components/TopRight/LanguageSelector.vue'
 
 
 export default {
@@ -71,7 +72,6 @@ export default {
     infoButtonClicked: function(e){
       //window.eventBus.emit('TopRightNav_infoButtonClicked');
       window.eventBus.emit('OpenCentralPanel', 'infoPanel');
-      //window.open('https://github.com/BlueNetCat/OBSEA', '_blank');
     }
   },
   components: {

@@ -7,6 +7,7 @@ import { OceanParameters } from '/Barcelona/Assets/Ocean/OceanParams.js';
 class OceanEntity {
 
   isLoaded = false;
+  visibleFlag = 0.5;
 
   time = 0;
   tangent = new THREE.Vector3();
@@ -105,6 +106,8 @@ class OceanEntity {
           u_wave2Params: { value: new THREE.Vector4(0.05, 0.2, 0.5, 1.0) }, // steepness, waveHeight, directionx, directionz
           u_wave3Params: { value: new THREE.Vector4(0.1, 0.05, 1.0, 1.0) }, // steepness, waveHeight, directionx, directionz
           u_normalTexture: {value: normalTexture}, // TODO: WHAT IF THE TEXTURE TAKES TOO LONG TO LOAD?
+          // Visible flag
+          u_visibleFlag: { value: this.visibleFlag},
         },
         vertexShader: OceanVertShader,
         fragmentShader: OceanFragShader,
@@ -261,6 +264,18 @@ class OceanEntity {
     this.oceanTile.material.uniforms.u_paramsTexture.value = paramsTexture;
   }
 
+
+  shiftVisibleFlag() {
+    this.visibleFlag += 0.5;
+    if (this.visibleFlag == 1.5){
+      this.visibleFlag = 0;
+      this.oceanTile.visible = false;
+    } else {
+      this.oceanTile.visible = true;
+      // Update uniforms
+      this.oceanTile.material.uniforms.u_visibleFlag.value = this.visibleFlag;
+    }
+  }
 
 
 

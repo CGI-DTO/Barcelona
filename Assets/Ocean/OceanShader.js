@@ -209,6 +209,8 @@ export const OceanFragShader = /* glsl */`
   // Fog
   uniform vec3 u_fogUnderwaterColor;
   uniform float u_fogDensity;
+  // Visible flag
+  uniform float u_visibleFlag;
 
   //varying vec4 v_OceanColor;
 
@@ -222,8 +224,10 @@ export const OceanFragShader = /* glsl */`
 
   void main(){
 
-    if (v_WorldPosition.x > 0.0){
-      discard;
+    if (u_visibleFlag == 0.5) {
+      if (v_WorldPosition.x > 0.0){
+        discard;
+      }
     }
 
     // Bump texture for specular reflections

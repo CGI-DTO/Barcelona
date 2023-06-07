@@ -30,6 +30,17 @@ export default {
     window.addEventListener('resize', (e) => {
       this.sceneManager.windowWasResized();
     });
+    // Keyboard event
+    document.addEventListener("keydown", (e) => {
+      if (e.code == "KeyH"){
+        // Hide/Show ocean
+        if (this.sceneManager.ocean){
+          this.sceneManager.ocean.shiftVisibleFlag();
+          //let isVisible = this.sceneManager.ocean.oceanTile.visible;
+          //this.sceneManager.ocean.oceanTile.visible = !isVisible;
+        }
+      }
+    })
     // ***** INSTRUMENTS PANEL *****
     // Center on instruments
     window.eventBus.on('InstrumentsMenu_buoyButtonClicked', () => {

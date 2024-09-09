@@ -1,18 +1,18 @@
 import * as THREE from 'three';
-import { OrbitControls } from 'https://threejs.org/examples/jsm/controls/OrbitControls.js';
-//import { OBJLoader } from 'https://threejs.org/examples/jsm/loaders/OBJLoader.js';
-import { GLTFLoader } from 'https://threejs.org/examples/jsm/loaders/GLTFLoader.js';
-import { FBXLoader } from 'https://threejs.org/examples/jsm/loaders/FBXLoader.js'
+import { OrbitControls } from '/Barcelona/lib/three.js/examples/jsm/controls/OrbitControls.js';
+//import { OBJLoader } from '/Barcelona/lib/three.js/examples/jsm/loaders/OBJLoader.js';
+import { GLTFLoader } from '/Barcelona/lib/three.js/examples/jsm/loaders/GLTFLoader.js';
+import { FBXLoader } from '/Barcelona/lib/three.js/examples/jsm/loaders/FBXLoader.js'
 import { OceanEntity } from './OceanEntity.js';
 import { SandEntity } from '../Assets/Terrain/SandEntity.js';
 import * as FogShader from '../Assets/Terrain/FogShader.js'
 
 import { SkyboxEntity } from '../Assets/Skybox/SkyboxEntity.js';
-// import { GUI } from 'https://threejs.org/examples/jsm/libs/lil-gui.module.min.js';
+// import { GUI } from '/Barcelona/lib/three.js/examples/jsm/libs/lil-gui.module.min.js';
 
 
 /* OCEAN
-https://threejs.org/examples/webgl_shaders_ocean.html
+/Barcelona/lib/three.js/examples/webgl_shaders_ocean.html
 https://29a.ch/slides/2012/webglwater/
 https://29a.ch/sandbox/2012/terrain/
 https://www.tamats.com/work/bwr/
@@ -25,7 +25,7 @@ https://www.shadertoy.com/view/4dBcRD#
 https://www.shadertoy.com/view/Xdlczl
 
 sky shader
-https://threejs.org/examples/?q=sky#webgl_shaders_sky
+/Barcelona/lib/three.js/examples/?q=sky#webgl_shaders_sky
 
 
 TODO:
